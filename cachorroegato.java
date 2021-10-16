@@ -2,7 +2,8 @@ package ProjetoAdote;
 
 public class cachorroegato {
 	//DECLARAÇÃO DE ATRIBUTOS
-		String tipo;
+		int id = 0;
+		String tipo;//cachorro ou gato
 		String nome;
 		String castrado;
 		String vacinado;
@@ -24,11 +25,24 @@ public class cachorroegato {
 			this.cor = cor;
 			this.raca = raca;
 			this.porte = porte;
+			
 		}
-		//METODOS GET E SET
+		//METODOS GET E SET E TOSTRING
+		
+		
 		public String getTipo() {
 			return tipo;
 		}
+		public int getId() {
+			return id;
+		}
+
+
+		public void setId(int id) {
+			this.id = id;
+		}
+
+
 		public void setTipo(String tipo) {
 			this.tipo = tipo;
 		}
@@ -88,6 +102,6 @@ public class cachorroegato {
 		}
 		//IMPRIMIR INFO
 		public String toString() {
-			return this.tipo+ " -> " + this.nome + " -> " + this.sexo + ", "+ this.porte + ", " + this.castrado+ ", "+ this.vacinado +", "+ this.cor + "// Vive bem em casa? "+ this.Casa + " // Em Apartamento? " + this.Apto + "// RAÇA: " + this.raca;
+			return  this.tipo+ " -> " + this.nome + " -> " + this.sexo + ", "+ this.porte + ", " + this.castrado+ ", "+ this.vacinado +", "+ this.cor + "// Vive bem em casa? "+ this.Casa + " // Em Apartamento? " + this.Apto + "// RAÇA: " + this.raca+" PORTE: "+this.porte;
 		}
 }

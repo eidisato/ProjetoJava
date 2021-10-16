@@ -16,8 +16,11 @@ public class Adote {
         String porte;
         int qtd = 0;
         int op;
+        int aj = 0;
+        
+
 //OBJETOS
-        //Contem info dos animais cadastrados no sistema
+        //Conter info dos animais cadastrados no sistema
         cachorroegato cachorro1 = new cachorroegato("CACHORRO","Bini","Macho","Castrado","Vacinado","Sim","Não","Marrom","Dobermann","Grande");
         cachorroegato cachorro2 = new cachorroegato("CACHORRO","Amelia","Femea","Não Castrado","Vacinado","Sim","Não","Preto","Viralata","Pequeno");
         cachorroegato cachorro3 = new cachorroegato("CACHORRO","Claudinho","Macho"," Não Castrado","Não Vacinado","Não","Sim","Branco/Preto","Dalmata","Pequeno");
@@ -27,7 +30,7 @@ public class Adote {
         cachorroegato	gato2	= new cachorroegato("GATO","Shie","Femea","Não Castrado","Vacinado","Não","Não","Listrado","Viralata","Pequeno");
         cachorroegato	gato3	= new cachorroegato("GATO","Andreia","Femea","Castrado","Não Vacinado","Não","Sim","Marrom","Viralata","Grande");
         cachorroegato	gato4	= new cachorroegato("GATO","Kevin","Macho","Não Castrado","Não Vacinado","Não","Não","Preto","Viralata","Grande");
-    
+      
 //ARRAYLIST 
         //Separa os objetos do tipo gato e cachorro
         ArrayList<cachorroegato> cachorros = new ArrayList<>();
@@ -56,14 +59,14 @@ switch(animal){
         case 1: //CACHORROS
         	//IMPRIME LISTA DE CACHORROS DISPONÍVEIS
         	System.out.println("\n\nLista de Cachorrinhos para adoção: ");
-        	for(int i = 0; i < 4;i++) {
-            System.out.println(cachorros.get(i));
+        	for(int i = 0; i < cachorros.size();i++) {
+            System.out.println("id = "+i+" // "+cachorros.get(i));
             System.out.println("\n-----------------------------------");
         	}
         	System.out.println("\n-----------------------------------");
         	System.out.println("\n\nDeseja adotar quantos?");
         	qtd = input.nextInt();
-        
+        	String aq1[] = new String[qtd]; 
         	//FILTRAR LISTA POR CARACTERISTICAS ESPECIFICAS
         	System.out.println("\nDeseja filtrar por caracteristicas?");
         	System.out.println("\n-----------------------------------");
@@ -76,7 +79,7 @@ switch(animal){
         			case 1:
 
         				for(int i = 0; qtd != i ; i++ ){
-        				System.out.println("Filtrar Se esta castrado?");
+        				System.out.println("\nFiltrar se esta castrado?");
         				System.out.println("Sim = 1");
         				System.out.println("Não = 0");
         				int r = input.nextInt();
@@ -87,8 +90,8 @@ switch(animal){
                         default -> throw new IllegalStateException("Unexpected value: " + r);
         				}
 
-                        System.out.println("Masculino = 1");
-                        System.out.println("Feminino = 2");
+                        System.out.println("Macho = 1");
+                        System.out.println("Femea = 2");
                         int s = input.nextInt();
                         switch (s) {
                         case 1 -> sexo = "Macho";
@@ -128,30 +131,60 @@ switch(animal){
                    
                     
                         //ANALISE DAS CARACTERISTICAS SELECIONADAS PELO USUARIO                  
-                        for(int h = 0; h < 4; h++){
-                        if(cachorros.get(h).castrado == cast && cachorros.get(h).sexo == sexo && cachorros.get(h).porte == porte && cachorros.get(h).Apto == amba && cachorros.get(h).Casa == ambc)
-                            System.out.println(cachorros.get(h));
+                        for(int h = 0; h < cachorros.size(); h++){
+                        	
+
+                        if(cachorros.get(h).castrado == cast && cachorros.get(h).sexo == sexo && cachorros.get(h).porte == porte && cachorros.get(h).Apto == amba && cachorros.get(h).Casa == ambc) {                           
+                        	System.out.println(cachorros.get(h));
+                        	aq1[aj] = cachorros.get(h).nome;
+                        	aj++;
                         }
+                         
+                        }
+                        if(aq1[0] == null) {
+                        	System.out.println("Características não correspondem...");
+                        }		
+                        else {
+                        	for(int k = 0 ; k < qtd; k++) {
+                                System.out.println("Parabens voce adotou os cachorros "+ aq1[k]);
+                                }
                 }
+        		}		
                 break;
+        				
 
     			case 2:
-                System.out.println("Qual doguinho deseja adotar?");  
+    			for(int jj = 0; jj<qtd; jj++) {
+                System.out.println("Qual doguinho deseja adotar");
+                System.out.println("Por favor insira o Id Do cachorro a ser Adotado.");
+                int nomedog = input.nextInt();
+                for(int l = 0; l < cachorros.size();l++){
+                if(nomedog == l) {
+                	aq1[aj] = cachorros.get(l).nome;
+                	aj++;
+                	
+                }
+                }
+    				}for(int o = 0;o<qtd;o++)
+                		System.out.println("Parabéns aos Envolvidos agora o(s) "+ aq1[o] + " Tera um novo lar! o seu Lar!");
                 break;
-        }break;
+                
+        		}
+        		
+        		break;
         		
         		
         case 2://GATOS
-        	//IMPRIME LISTA DE CACHORROS DISPONÍVEIS
+        	//IMPRIME LISTA DE GATOS DISPONÍVEIS
         	System.out.println("\n\nLista de Gatinhos para adoção: ");
-        	for(int i = 0; i < 4;i++) {
-            System.out.println(gatos.get(i));
+        	for(int i = 0; i < gatos.size();i++) {
+            System.out.println("id = "+i+" // "+gatos.get(i));
             System.out.println("\n-----------------------------------");
         	}
         	System.out.println("\n-----------------------------------");
         	System.out.println("\n\nDeseja adotar quantos?");
         	qtd = input.nextInt();
-        	
+        	String aq2[] = new String[qtd]; 
         	//FILTRAR LISTA POR CARACTERISTICAS ESPECIFICAS
         	System.out.println("\nDeseja filtrar por caracteristicas?");
         	System.out.println("\n-----------------------------------");
@@ -159,11 +192,12 @@ switch(animal){
         	System.out.println("\n(2) NãO");
         	System.out.println("\nOPÇÃO:");op=input.nextInt();
         	System.out.println("\n-----------------------------------");
-        	
+
         		switch(op) {
-        		case 1:
-        			for(int i = 0; qtd != i ; i++ ){
-        				System.out.println("Filtrar Se esta castrado?");
+        			case 1:
+
+        				for(int i = 0; qtd != i ; i++ ){
+        				System.out.println("\nFiltrar se esta castrado?");
         				System.out.println("Sim = 1");
         				System.out.println("Não = 0");
         				int r = input.nextInt();
@@ -183,7 +217,7 @@ switch(animal){
                         default -> throw new IllegalStateException("Unexpected value: " + s);
                         }
                             
-                        System.out.println("Preferencialmente o cachorro seria bom para viver em que ambiente?");
+                        System.out.println("Preferencialmente o gatinho seria bom para viver em qual ambiente?");
                         System.out.println("Apto = 0");
                         System.out.println("Casa = 1");
                         System.out.println("Ambos = 2");
@@ -215,17 +249,44 @@ switch(animal){
                    
                     
                         //ANALISE DAS CARACTERISTICAS SELECIONADAS PELO USUARIO                  
-                        for(int h = 0; h < 4; h++){
-                        if(gatos.get(h).castrado == cast && gatos.get(h).sexo == sexo && gatos.get(h).porte == porte && gatos.get(h).Apto == amba && gatos.get(h).Casa == ambc)
-                            System.out.println(gatos.get(h));
+                        for(int h = 0; h < gatos.size(); h++){
+                        	
+
+                        if(gatos.get(h).castrado == cast && gatos.get(h).sexo == sexo && gatos.get(h).porte == porte && gatos.get(h).Apto == amba && gatos.get(h).Casa == ambc) {                           
+                        	System.out.println(gatos.get(h));
+                        	aq2[aj] = gatos.get(h).nome;
+                        	aj++;
                         }
+                        
+                        }
+                        if(aq2[0] == null) {
+                        	System.out.println("Características não correspondem...");
+                        }		
+                        else {
+                        	for(int k = 0 ; k < qtd; k++) {
+                                System.out.println("Parabens voce adotou os cachorros "+ aq2[k]);
+                                }
                 }
-        			break;
-        		case 2:
-                    System.out.println("Qual doguinho deseja adotar?");  
-                    
-                    break;
-        		}
+        		}		
+                break;
+
+    			case 2:
+    			for(int jj = 0; jj<qtd; jj++) {
+                System.out.println("Qual gatinho deseja adotar");
+                System.out.println("Por favor insira o Id Do gatinho a ser Adotado.");
+                int nomecat = input.nextInt();
+                for(int l = 0; l < gatos.size();l++){
+                if(nomecat == l) {
+                	aq2[aj] = gatos.get(l).nome;
+                	aj++;
+                	
+                }
+                }
+    				}for(int o = 0;o<qtd;o++)
+                		System.out.println("Parabéns aos Envolvidos agora o(s) "+ aq2[o] + " Tera um novo lar! o seu Lar!");
+                break;
+                
+        		}	break;
         	
 }
     }
